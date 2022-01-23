@@ -5,6 +5,7 @@ width: 100vw;
 height: 90vh;
 border-left: 1.4rem solid rgba(255, 255, 255, 0.7);
 `;
+
 const LaneF = styled.div`
   width: 20rem;
   height: 90vh;
@@ -32,9 +33,20 @@ const LaneF = styled.div`
   }
 `;
 
+const Circle = styled.div`
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 8.3rem;
+  left: 0.7rem;
+`;
+
 function Board() {
   return <BoardWrap>
       <LaneF/>
+      <Circle></Circle>
   </BoardWrap>;
 }
 
