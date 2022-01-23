@@ -6,7 +6,7 @@ const Nav = styled.div`
   width: 100vw;
   height: 4rem;
   color: white;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.88);
 `;
 
 const Logo = styled.h1`
