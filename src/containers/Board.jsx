@@ -34,13 +34,13 @@ const LaneF = styled.div`
 `;
 
 const Circle = styled.div`
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
   background-color: white;
   position: absolute;
-  top: 8.3rem;
-  left: 0.7rem;
+  top: 8.55rem;
+  left: 1rem;
 `;
 
 function Board() {
