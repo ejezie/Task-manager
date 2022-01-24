@@ -1,12 +1,15 @@
 import styled from "styled-components";
+import Lane from "../components/Lane";
 
 const BoardWrap = styled.div`
+display: flex;
+align-items: flex-end;
 width: 100vw;
 height: 90vh;
-border-left: 1.4rem solid rgba(255, 255, 255, 0.7);
+border-left: 1.4rem solid rgba(255, 255, 255, 0.2);
 `;
 
-const LaneF = styled.div`
+const LaneMain = styled.div`
   width: 20rem;
   height: 90vh;
   background: rgba(255, 255, 255, 0.2);
@@ -45,8 +48,11 @@ const Circle = styled.div`
 
 function Board() {
   return <BoardWrap>
-      <LaneF/>
+      <LaneMain/>
       <Circle></Circle>
+      <Lane/>
+      <Lane/>
+      <Lane/>
   </BoardWrap>;
 }
 

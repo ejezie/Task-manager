@@ -4,6 +4,6 @@
   background-position-x: center;
   background-position-y: center;
   height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.0)),
     url(./assets/bg.png);
 }
