@@ -2,14 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const TicketWrap = styled.div`
-display: flex;
-align-items: flex-start;
-flex-direction: column;
-width: 18rem;
-height: fit-content;
-padding: 1rem;
-background-color: rgba(255, 255, 255, 1);
-margin-bottom: 1rem;`;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 18rem;
+  height: fit-content;
+  padding: 1rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 1);
+  margin-bottom: 1rem;
+`;
 
 const Wrap = styled.div`
   display: flex;
@@ -19,16 +21,16 @@ const Wrap = styled.div`
 `;
 const Bar = styled.div`
   width: 4rem;
-  background-color: aqua;
-  height: 4px;
+  background-color: #dee0e0;
+  height: 3px;
   border-radius: 18.75%;
 `;
 const Title = styled.div`
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
 `;
 const Text = styled.div`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   max-width: 400px;
 `;
 const Icon = styled.div`

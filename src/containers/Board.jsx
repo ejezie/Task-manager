@@ -12,8 +12,9 @@ const BoardWrap = styled.div`
 
 const LaneMain = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
   width: 20rem;
   height: 90vh;
   background: rgba(255, 255, 255, 0.2);
@@ -24,6 +25,7 @@ const LaneMain = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
   padding-top: 6rem;
+  overflow-y: scroll;
   // &:after {
   //   content: "";
   //   position: absolute;
@@ -55,6 +57,13 @@ function Board() {
   return (
     <BoardWrap>
       <LaneMain>
+        <Ticket />
+        <Ticket />
+        <Ticket />
+        <Ticket />
+        <Ticket />
+        <Ticket />
+        <Ticket />
         <Ticket />
       </LaneMain>
       <Circle></Circle>
