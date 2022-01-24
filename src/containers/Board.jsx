@@ -1,15 +1,19 @@
 import styled from "styled-components";
 import Lane from "../components/Lane";
+import Ticket from "../components/Ticket";
 
 const BoardWrap = styled.div`
-display: flex;
-align-items: flex-end;
-width: 100vw;
-height: 90vh;
-border-left: 1.4rem solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: flex-end;
+  width: 100vw;
+  height: 90vh;
+  border-left: 1.4rem solid rgba(255, 255, 255, 0.2);
 `;
 
 const LaneMain = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   width: 20rem;
   height: 90vh;
   background: rgba(255, 255, 255, 0.2);
@@ -19,13 +23,14 @@ const LaneMain = styled.div`
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
-  &:after {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 1px;
-    background-color: rgba(255, 255, 255, 0.5);
-  }
+  padding-top: 6rem;
+  // &:after {
+  //   content: "";
+  //   position: absolute;
+  //   height: 100%;
+  //   width: 1px;
+  //   background-color: rgba(255, 255, 255, 0.5);
+  // }
   &:before {
     content: "";
     position: absolute;
@@ -47,13 +52,17 @@ const Circle = styled.div`
 `;
 
 function Board() {
-  return <BoardWrap>
-      <LaneMain/>
+  return (
+    <BoardWrap>
+      <LaneMain>
+        <Ticket />
+      </LaneMain>
       <Circle></Circle>
-      <Lane/>
-      <Lane/>
-      <Lane/>
-  </BoardWrap>;
+      <Lane />
+      <Lane />
+      <Lane />
+    </BoardWrap>
+  );
 }
 
 export default Board;
