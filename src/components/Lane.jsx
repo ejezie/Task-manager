@@ -59,13 +59,13 @@ const Title = styled.div`
   border-radius: 20px;
 `;
 
-function Lane({ tickets, loading, error, title, id, onDragStart }) {
+function Lane({ tickets, loading, error, title, id, onDragStart, onDragOver, onDrop}) {
   return (
-    <Lanes>
+    <Lanes onDragOver={onDragOver} onDrop={e => onDrop(e, id)}>
       {(loading || error) && <Alert>{loading ? "loading..." : error}</Alert>}
       <Title lane={id}>{title}</Title>
       {tickets.map((ticket) => (
-        <Ticket id={ticket.id} ticket={ticket} onDragStart={onDragStart}/>
+        <Ticket id={ticket.id} ticket={ticket} onDragStart={onDragStart} />
       ))}
     </Lanes>
   );

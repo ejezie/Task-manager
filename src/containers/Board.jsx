@@ -69,9 +69,29 @@ class Board extends Component {
     e.dataTransfer.setData('id', id);
   }
 
+  onDragOver = e => {
+        e.preventDefault();
+    }
+
+  onDrop = (e, laneid) => {
+    const ticketLane = e.dataTransfer.getData('id');
+    console.log(ticketLane);
+
+    var tickets = this.state.tickets.filter(ticket => {
+      if(ticket.lane === ticketLane){
+        ticket.lane = laneid
+      }
+      return tickets;
+    })
+    this.setState({
+      ...this.state,
+      tickets,
+    })
+  }
+
   render() {
-    const { loading, error, tickets, data } = this.state;
-    console.log(this.state.data);
+    const { loading, error, tickets } = this.state;
+  
     const lanes = [
       { id: 1, title: "Created task" },
       { id: 2, title: "In progress" },
@@ -89,6 +109,8 @@ class Board extends Component {
             error={error}
             tickets={tickets.filter((tickets) => tickets.lane === lane.id)}
             onDragStart = {this.onDragStart}
+            onDragOver = {this.onDragOver}
+            onDrop = {this.onDrop}
           />
         ))}
       </BoardWrap>
