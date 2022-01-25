@@ -26,7 +26,14 @@ const Wrap = styled.div`
 `;
 const Bar = styled.div`
   width: 4rem;
-  background-color: #dee0e0;
+  background-color: ${(props) =>
+    props.lane === 1
+      ? "#dee0e0"
+      : props.lane === 2
+      ? "#f5a003"
+      : props.lane === 3
+      ? "#cadf54"
+      : "green"};
   height: 3px;
   border-radius: 18.75%;
 `;
@@ -56,7 +63,7 @@ function Ticket({ticket}) {
   return (
     <TicketWrap>
       <Wrap>
-        <Bar />
+        <Bar lane = {ticket.lane}/>
         <Icon>
           <i class="fal fa-edit"></i>
         </Icon>

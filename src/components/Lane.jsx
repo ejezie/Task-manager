@@ -41,9 +41,21 @@ const Title = styled.div`
   position: absolute;
   top: 1rem;
   left: 0.5rem;
-  color: white;
-  font-weight: 700;
-  font-size: 1.4rem
+  color: ${(props) =>
+    props.lane === 1
+      ? "#dee0e0"
+      : props.lane === 2
+      ? "#f5a003"
+      : props.lane === 3
+      ? "#cadf54"
+      : "green"};
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: center;
+  width: 10rem;
+  padding: 0.2rem;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 20px;
 `;
 
 function Lane({ tickets, loading, error, title, id }) {
