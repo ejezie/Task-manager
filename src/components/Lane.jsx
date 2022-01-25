@@ -1,7 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import Ticket from "./Ticket";
 
 const Lanes = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 6rem;
   width: 18rem;
   height: 85vh;
   background: rgba(255, 255, 255, 0.2);
@@ -12,25 +18,25 @@ const Lanes = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
   margin: 0rem 0rem 1rem 1.1rem;
-//   &:after {
-//     content: "";
-//     position: absolute;
-//     height: 100%;
-//     width: 1px;
-//     background-color: rgba(255, 255, 255, 0.5);
-//   }
-//   &:before {
-//     content: "";
-//     position: absolute;
-//     height: 1px;
-//     width: 100%;
-//     background-color: rgba(255, 255, 255, 0.5);
-//     top: 5rem;
-//   }
+  overflow-y: scroll;
+  &:before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 5rem;
+  }
 `;
 
-function Lane() {
-  return <Lanes></Lanes>;
+function Lane({ tickets }) {
+  return (
+    <Lanes>
+        {tickets.map(ticket => (
+            <Ticket id={ticket.id} ticket={ticket}/>
+        ))}
+    </Lanes>
+  );
 }
 
 export default Lane;

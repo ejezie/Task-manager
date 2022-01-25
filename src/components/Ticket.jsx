@@ -5,7 +5,7 @@ const TicketWrap = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  width: 18rem;
+  width: 16rem;
   height: fit-content;
   padding: 1rem;
   border-radius: 2px;
@@ -37,7 +37,7 @@ const Icon = styled.div`
   font-size: 0.7rem;
 `;
 
-function Ticket() {
+function Ticket({ticket}) {
   return (
     <TicketWrap>
       <Wrap>
@@ -46,8 +46,8 @@ function Ticket() {
           <i class="fal fa-edit"></i>
         </Icon>
       </Wrap>
-      <Title>Code the Frontend</Title>
-      <Text>Finish up the mini task manager application tommorow</Text>
+      <Title>{ticket.title}</Title>
+      <Text>{ticket.task}</Text>
     </TicketWrap>
   );
 }
