@@ -19,6 +19,7 @@ const Lanes = styled.div`
   position: relative;
   margin: 0rem 0rem 1rem 1.1rem;
   overflow-y: scroll;
+  position: relative;
   &:before {
     content: "";
     position: absolute;
@@ -29,12 +30,30 @@ const Lanes = styled.div`
   }
 `;
 
-function Lane({ tickets }) {
+const Alert = styled.div`
+  text-align: center;
+  padding: 0.5rem;
+  background-color: red;
+  color: white;
+  font-weight: 500;
+`;
+const Title = styled.div`
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  color: white;
+  font-weight: 700;
+  font-size: 1.4rem
+`;
+
+function Lane({ tickets, loading, error, title, id }) {
   return (
     <Lanes>
-        {tickets.map(ticket => (
-            <Ticket id={ticket.id} ticket={ticket}/>
-        ))}
+      {(loading || error) && <Alert>{loading ? "loading..." : error}</Alert>}
+      <Title lane={id}>{title}</Title>
+      {tickets.map((ticket) => (
+        <Ticket id={ticket.id} ticket={ticket} />
+      ))}
     </Lanes>
   );
 }
