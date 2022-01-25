@@ -61,7 +61,7 @@ const Icon = styled.div`
 
 function Ticket({ticket, onDragStart}) {
   return (
-    <TicketWrap draggable onDragStart={e=> onDragStart(e, ticket.lane)}>
+    <TicketWrap draggable onDrag={e=> onDragStart(e, ticket.lane)}>
       <Wrap>
         <Bar lane = {ticket.lane}/>
         <Icon>

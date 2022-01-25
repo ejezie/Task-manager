@@ -57,11 +57,11 @@ class Board extends Component {
     this._isMounted = false;
   }
 
-  componentDidUpdate(prevState){
+  async componentDidUpdate(prevState){
     if(prevState.data !== this.state.data){
-      this.setState({
-        tickets: this.state.data,
-      })
+     this.setState({
+       tickets: this.state.data
+     });
     }
   }
 
@@ -70,7 +70,8 @@ class Board extends Component {
   }
 
   render() {
-    const { loading, error, tickets } = this.state;
+    const { loading, error, tickets, data } = this.state;
+    console.log(this.state.data);
     const lanes = [
       { id: 1, title: "Created task" },
       { id: 2, title: "In progress" },
