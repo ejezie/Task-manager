@@ -32,10 +32,10 @@ const Bar = styled.div`
       : props.lane === 2
       ? "#f5a003"
       : props.lane === 3
-      ? "#cadf54"
-      : "green"};
-  height: 3px;
-  border-radius: 18.75%;
+      ? "#e7e406"
+      : "#06bd06"};
+  height: 4px;
+  border-radius: 18.75px;
 `;
 const Title = styled.div`
   font-size: 1rem;
@@ -59,9 +59,9 @@ const Icon = styled.div`
   }
 `;
 
-function Ticket({ticket}) {
+function Ticket({ticket, onDragStart}) {
   return (
-    <TicketWrap>
+    <TicketWrap draggable onDragStart={e=> onDragStart(e, ticket.lane)}>
       <Wrap>
         <Bar lane = {ticket.lane}/>
         <Icon>

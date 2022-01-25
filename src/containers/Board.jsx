@@ -5,37 +5,11 @@ import Ticket from "../components/Ticket";
 
 const BoardWrap = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 100vw;
   height: 90vh;
   border-left: 1.4rem solid rgba(255, 255, 255, 0.4);
 `;
-
-// const LaneMain = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-start;
-//   flex-direction: column;
-//   width: 20rem;
-//   height: 90vh;
-//   background: rgba(255, 255, 255, 0.2);
-//   border-radius: 0px;
-//   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-//   backdrop-filter: blur(5px);
-//   -webkit-backdrop-filter: blur(5px);
-//   border: 1px solid rgba(255, 255, 255, 0.3);
-//   position: relative;
-//   padding-top: 6rem;
-//   overflow-y: scroll;
-//   &:before {
-//     content: "";
-//     position: absolute;
-//     height: 1px;
-//     width: 100%;
-//     background-color: rgba(255, 255, 255, 0.5);
-//     top: 5rem;
-//   }
-// `;
 
 const Circle = styled.div`
   width: 1rem;
@@ -54,6 +28,7 @@ class Board extends Component {
       data: [],
       loading: true,
       error: "",
+      tickets: [],
     };
   }
 
@@ -77,11 +52,25 @@ class Board extends Component {
       });
     }
   }
+
   componentWillUnmount() {
     this._isMounted = false;
   }
+
+  componentDidUpdate(prevState){
+    if(prevState.data !== this.state.data){
+      this.setState({
+        tickets: this.state.data,
+      })
+    }
+  }
+
+  onDragStart = (e, id) => {
+    e.dataTransfer.setData('id', id);
+  }
+
   render() {
-    const { data, loading, error } = this.state;
+    const { loading, error, tickets } = this.state;
     const lanes = [
       { id: 1, title: "Created task" },
       { id: 2, title: "In progress" },
@@ -90,12 +79,6 @@ class Board extends Component {
     ];
     return (
       <BoardWrap>
-        {/* <LaneMain>
-         
-          {data.map((data) => (
-            <Ticket id={data.id} data={data} />
-          ))}
-        </LaneMain> */}
         <Circle></Circle>
         {lanes.map((lane) => (
           <Lane
@@ -103,7 +86,8 @@ class Board extends Component {
             title={lane.title}
             loading={loading}
             error={error}
-            tickets={data.filter((tickets) => tickets.lane === lane.id)}
+            tickets={tickets.filter((tickets) => tickets.lane === lane.id)}
+            onDragStart = {this.onDragStart}
           />
         ))}
       </BoardWrap>
