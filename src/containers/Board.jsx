@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import Lane from "../components/Lane";
-import Ticket from "../components/Ticket";
+import dataFecth from "../dataFetch";
 
 const BoardWrap = styled.div`
   display: flex;
@@ -25,48 +25,21 @@ class Board extends Component {
   constructor() {
     super();
     this.state = {
-      data: [],
-      loading: true,
-      error: "",
       tickets: [],
     };
   }
 
-  async componentDidMount() {
-    this._isMounted = true;
-    try {
-      const tickets = await fetch("http://localhost:3006/tickets");
-      const ticketJSON = await tickets.json();
-      // console.log(ticketJSON);
-
-      if (ticketJSON) {
-        this.setState({
-          data: ticketJSON,
-          loading: false,
-        });
-      }
-    } catch (error) {
-      this.setState({
-        loading: false,
-        error: "Error fectching tickets",
-      });
-    }
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
-  async componentDidUpdate(prevState){
-    if(prevState.data !== this.state.data){
+  componentDidUpdate(prevProps){
+    if(prevProps.data !== this.props.data){
      this.setState({
-       tickets: this.state.data
+       tickets: this.props.data
      });
     }
   }
 
-  onDragStart = (e, id) => {
-    e.dataTransfer.setData('id', id);
+  onDragStart = (e, laneid, ticketid) => {
+    e.dataTransfer.setData('laneid', laneid);
+    e.dataTransfer.setData('ticketid', ticketid);
   }
 
   onDragOver = e => {
@@ -74,14 +47,18 @@ class Board extends Component {
     }
 
   onDrop = (e, laneid) => {
-    const ticketLane = e.dataTransfer.getData('id');
-    console.log(ticketLane);
+    const ticketLane = e.dataTransfer.getData('laneid');
+    const ticketId = e.dataTransfer.getData('ticketid');
+    // console.log(ticketLane);
+    // console.log(laneid + " laneid");
 
-    var tickets = this.state.tickets.filter(ticket => {
-      if(ticket.lane === ticketLane){
-        ticket.lane = laneid
+    const tickets = this.state.tickets.map(ticket => {
+      if(ticket.lane == ticketLane){
+        if(ticket.id == ticketId){
+          ticket.lane = laneid;
+        }
       }
-      return tickets;
+      return ticket;
     })
     this.setState({
       ...this.state,
@@ -90,7 +67,7 @@ class Board extends Component {
   }
 
   render() {
-    const { loading, error, tickets } = this.state;
+    const { loading, error } = this.props;
   
     const lanes = [
       { id: 1, title: "Created task" },
@@ -107,7 +84,7 @@ class Board extends Component {
             title={lane.title}
             loading={loading}
             error={error}
-            tickets={tickets.filter((tickets) => tickets.lane === lane.id)}
+            tickets={this.state.tickets.filter((tickets) => tickets.lane === lane.id)}
             onDragStart = {this.onDragStart}
             onDragOver = {this.onDragOver}
             onDrop = {this.onDrop}
@@ -119,4 +96,4 @@ class Board extends Component {
 }
 
 
-export default Board;
+export default dataFecth(Board);
