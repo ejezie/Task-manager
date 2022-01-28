@@ -65,7 +65,7 @@ class Board extends Component {
   }
 
   render() {
-    const { loading, error } = this.props;
+    const { loading, error, toggleEdit } = this.props;
   
     const lanes = [
       { id: 1, title: "Created task" },
@@ -82,6 +82,7 @@ class Board extends Component {
             title={lane.title}
             loading={loading}
             error={error}
+            toggleEdit={toggleEdit}
             tickets={this.state.tickets.filter((tickets) => tickets.lane === lane.id)}
             onDragStart = {this.onDragStart}
             onDragOver = {this.onDragOver}

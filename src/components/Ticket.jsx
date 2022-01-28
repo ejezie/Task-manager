@@ -59,13 +59,13 @@ const Icon = styled.div`
   }
 `;
 
-function Ticket({ticket, onDragStart}) {
+function Ticket({ticket, onDragStart, toggleEdit}) {
   return (
     <TicketWrap draggable onDragStart={e=> onDragStart(e, ticket.lane, ticket.id)}>
       <Wrap>
         <Bar lane = {ticket.lane}/>
         <Icon>
-          <i class="fal fa-edit"></i>
+          <i class="fal fa-edit" onClick={toggleEdit}></i>
         </Icon>
       </Wrap>
       <Title>{ticket.title}</Title>

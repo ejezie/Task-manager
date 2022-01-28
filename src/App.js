@@ -16,13 +16,18 @@ function App() {
    };
 
    const handleAddTask = (data)=>{
-    
+
    }
   
   return (
     <div className="App">
-      <Navbar toggleTask={toggleAddTask} taskState={addTask} toggleEdit={toggleEditTask} editState={editTask}/>
-      <Board />
+      <Navbar
+        toggleTask={toggleAddTask}
+        taskState={addTask}
+        toggleEdit={toggleEditTask}
+        editState={editTask}
+      />
+      <Board toggleEdit={toggleEditTask} />
     </div>
   );
 }
