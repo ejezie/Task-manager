@@ -49,8 +49,6 @@ class Board extends Component {
   onDrop = (e, laneid) => {
     const ticketLane = e.dataTransfer.getData('laneid');
     const ticketId = e.dataTransfer.getData('ticketid');
-    // console.log(ticketLane);
-    // console.log(laneid + " laneid");
 
     const tickets = this.state.tickets.map(ticket => {
       if(ticket.lane == ticketLane){
