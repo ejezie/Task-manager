@@ -8,16 +8,20 @@ function App() {
   const [addTask, setAddTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
 
-   const handleAddTask = () => {
+   const toggleAddTask = () => {
      setAddTask(!addTask);
    };
-   const handleEditTask = () => {
+   const toggleEditTask = () => {
      setEditTask(!editTask);
    };
+
+   const handleAddTask = (data)=>{
+    
+   }
   
   return (
     <div className="App">
-      <Navbar HandleTask={handleAddTask} taskToggle={addTask} EditTask={handleEditTask} editToggle={editTask}/>
+      <Navbar toggleTask={toggleAddTask} taskState={addTask} toggleEdit={toggleEditTask} editState={editTask}/>
       <Board />
     </div>
   );

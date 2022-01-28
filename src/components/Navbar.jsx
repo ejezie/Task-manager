@@ -138,7 +138,7 @@ const Icon = styled.h1`
   }
 `;
 
-function Navbar({ EditTask, HandleTask, taskToggle, editToggle }) {
+function Navbar({ toggleEdit, toggleTask, taskState, editState }) {
   return (
     <Nav>
       <Wrap>
@@ -148,22 +148,22 @@ function Navbar({ EditTask, HandleTask, taskToggle, editToggle }) {
         </Heading>
       </Wrap>
       <div className="links">
-        <WrapOne onClick={HandleTask}>
+        <WrapOne onClick={toggleTask}>
           <Icon>
             <i class="fas fa-plus"></i>
           </Icon>
           <HeadingBtn>Add task</HeadingBtn>
         </WrapOne>
-        <WrapTwo onClick={EditTask}>
+        <WrapTwo onClick={toggleEdit}>
           <Icon>
             <i class="fas fa-pencil"></i>
           </Icon>
           <HeadingBtn>Edit task</HeadingBtn>
         </WrapTwo>
       </div>
-      <AddTask add={taskToggle}>
+      <AddTask add={taskState}>
         <form action="">
-          <i class="fas fa-window-close" onClick={HandleTask}></i>
+          <i class="fas fa-window-close" onClick={toggleTask}></i>
           ADD A NEW TASK
           <input type="text" placeholder="Title" />
           <textarea
@@ -176,9 +176,9 @@ function Navbar({ EditTask, HandleTask, taskToggle, editToggle }) {
           <button>Add the task</button>
         </form>
       </AddTask>
-      <UpdateTask edit={editToggle}>
+      <UpdateTask edit={editState}>
         <form action="">
-          <i class="fas fa-window-close" onClick={EditTask}></i>
+          <i class="fas fa-window-close" onClick={toggleEdit}></i>
           UPDATE YOUR TASK
           <input type="text" placeholder="Title" />
           <textarea
