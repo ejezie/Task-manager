@@ -21,13 +21,14 @@ const AddTask = styled.div`
   top: 0;
   right: 0;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), url(${bg});
-  border-radius: 0px;
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   height: 100vh;
   width: 20rem;
   z-index: 2;
   color: black;
+  font-size: 1.2rem;
+  font-weight: 700;
   form {
     display: flex;
     align-items: center;
@@ -43,25 +44,33 @@ const AddTask = styled.div`
       font-size: 1.5rem;
     }
     input {
-      border-bottom: 2px solid red;
+      border-bottom: 1px solid black;
       border-top: none;
       border-right: none;
       border-left: none;
+      background-color: transparent;
       // border-radius: 5px;
       width: 15rem;
       height: 3rem;
-      margin-bottom: 2rem;
+      margin: 2rem 0;
       padding: 1rem;
       font-size: 1rem;
+      outline: none;
+      color: black;
     }
     textarea {
-      border: 2px solid #dee0e0;
-      border-radius: 6px;
+      background-color: transparent;
+      border-bottom: 1px solid black;
+      border-top: none;
+      border-right: none;
+      border-left: none;
       width: 15rem;
       height: 10rem;
       margin-bottom: 2rem;
       padding: 0.5rem;
       font-size: 1rem;
+      outline: none;
+      color: black;
     }
     button {
       padding: 0.5rem;
@@ -69,10 +78,18 @@ const AddTask = styled.div`
       border-radius: 25px;
       border: none;
       cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-color: #dee0e0;
+        color: white;
+      }
     }
   }
 `;
 
+const UpdateTask = styled(AddTask)`
+  
+`;
 const Wrap = styled.div`
   display: flex;
   align-items: center;
@@ -133,12 +150,33 @@ function Navbar() {
       <AddTask>
         <form action="">
           <i class="fas fa-window-close"></i>
-          Add new task
-          <input type="text" />
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-          <button>Send</button>
+          ADD A NEW TASK
+          <input type="text" placeholder="Title" />
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Content"
+          ></textarea>
+          <button>Add the task</button>
         </form>
       </AddTask>
+      <UpdateTask>
+        <form action="">
+          <i class="fas fa-window-close"></i>
+          UPDATE YOUR TASK
+          <input type="text" placeholder="Title" />
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Content"
+          ></textarea>
+          <button>Update</button>
+        </form>
+      </UpdateTask>
     </Nav>
   );
 }
