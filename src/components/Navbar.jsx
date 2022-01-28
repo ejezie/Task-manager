@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import bg from "../assets/bg2.jpeg";
 
-
 const Nav = styled.div`
   display: flex;
   align-items: center;
@@ -11,10 +10,13 @@ const Nav = styled.div`
   color: white;
   background-color: rgba(0, 0, 0, 0.88);
   position: relative;
+  .links {
+    display: flex;
+  }
 `;
 
 const AddTask = styled.div`
-  display: flex;
+  display: ${(props) => (props.add ? "flex" : "none")};
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -88,8 +90,10 @@ const AddTask = styled.div`
 `;
 
 const UpdateTask = styled(AddTask)`
-  
+  display: ${(props) => (props.edit ? "flex" : "none")};
+  z-index: 10;
 `;
+
 const Wrap = styled.div`
   display: flex;
   align-items: center;
@@ -99,15 +103,17 @@ const Wrap = styled.div`
     color: #dee0e0;
   }
 `;
+const WrapOne = styled(Wrap)``;
+const WrapTwo = styled(Wrap)``;
 
 const Logo = styled.h1`
   margin-left: 3rem;
   letter-spacing: 2px;
   margin-right: 1.5rem;
   font-size: 1.3rem;
-  @media (max-width: 960px){
-      font-size: 0.9rem;
-      margin-left: 1rem;
+  @media (max-width: 960px) {
+    font-size: 0.9rem;
+    margin-left: 1rem;
   }
 `;
 const Heading = styled.h1`
@@ -117,7 +123,7 @@ const Heading = styled.h1`
   }
 `;
 const HeadingBtn = styled.h1`
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   margin-right: 3rem;
   @media (max-width: 960px) {
     font-size: 0.8rem;
@@ -132,24 +138,32 @@ const Icon = styled.h1`
   }
 `;
 
-function Navbar() {
+function Navbar({ EditTask, HandleTask, taskToggle, editToggle }) {
   return (
     <Nav>
       <Wrap>
-        <Logo>MiniTaskManager</Logo>
+        <Logo>MiniTasker</Logo>
         <Heading>
           <i class="fas fa-thumbtack"></i>
         </Heading>
       </Wrap>
-      <Wrap>
-        <Icon>
-          <i class="fas fa-plus"></i>
-        </Icon>
-        <HeadingBtn>Add task</HeadingBtn>
-      </Wrap>
-      <AddTask>
+      <div className="links">
+        <WrapOne onClick={HandleTask}>
+          <Icon>
+            <i class="fas fa-plus"></i>
+          </Icon>
+          <HeadingBtn>Add task</HeadingBtn>
+        </WrapOne>
+        <WrapTwo onClick={EditTask}>
+          <Icon>
+            <i class="fas fa-pencil"></i>
+          </Icon>
+          <HeadingBtn>Edit task</HeadingBtn>
+        </WrapTwo>
+      </div>
+      <AddTask add={taskToggle}>
         <form action="">
-          <i class="fas fa-window-close"></i>
+          <i class="fas fa-window-close" onClick={HandleTask}></i>
           ADD A NEW TASK
           <input type="text" placeholder="Title" />
           <textarea
@@ -162,9 +176,9 @@ function Navbar() {
           <button>Add the task</button>
         </form>
       </AddTask>
-      <UpdateTask>
+      <UpdateTask edit={editToggle}>
         <form action="">
-          <i class="fas fa-window-close"></i>
+          <i class="fas fa-window-close" onClick={EditTask}></i>
           UPDATE YOUR TASK
           <input type="text" placeholder="Title" />
           <textarea
