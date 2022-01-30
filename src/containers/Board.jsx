@@ -83,10 +83,12 @@ class Board extends Component {
             loading={loading}
             error={error}
             toggleEdit={toggleEdit}
-            tickets={this.state.tickets.filter((tickets) => tickets.lane === lane.id)}
-            onDragStart = {this.onDragStart}
-            onDragOver = {this.onDragOver}
-            onDrop = {this.onDrop}
+            tickets={this.state.tickets.filter(
+              (tickets) => tickets.lane === lane.id
+            )}
+            onDragStart={this.onDragStart}
+            onDragOver={this.onDragOver}
+            onDrop={this.onDrop}
           />
         ))}
       </BoardWrap>

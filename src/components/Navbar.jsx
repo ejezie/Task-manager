@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import bg from "../assets/bg2.jpeg";
+import { useState } from "react";
 
 const Nav = styled.div`
   display: flex;
@@ -138,7 +139,27 @@ const Icon = styled.h1`
   }
 `;
 
-function Navbar({ toggleEdit, toggleTask, taskState, editState }) {
+function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask }) {
+
+  const [taskContent, setTaskContent ] = useState({
+    title: "",
+    task: "",
+  })
+
+  const handleChange = (e) => {
+    // setTaskContent({...taskContent, e.target.name : e.t})
+  }
+
+  const onAddClick = (e) => {
+     e.preventDefault();
+    if (taskContent.title === "" || taskContent.task === "") {
+      alert("fill up both fields")
+    }
+
+    console.log(taskContent.task + taskContent.title);
+    handleAddTask(taskContent);
+  }
+
   return (
     <Nav>
       <Wrap>
@@ -165,15 +186,21 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState }) {
         <form action="">
           <i class="fas fa-window-close" onClick={toggleTask}></i>
           ADD A NEW TASK
-          <input type="text" placeholder="Title" />
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            onChange={(e) => setTaskContent({ title: e.target.value })}
+          />
           <textarea
             name=""
             id=""
             cols="30"
             rows="10"
             placeholder="Content"
+            onChange={(e) => setTaskContent({ task: e.target.value })}
           ></textarea>
-          <button>Add the task</button>
+          <button onClick={onAddClick}>Add the task</button>
         </form>
       </AddTask>
       <UpdateTask edit={editState}>
