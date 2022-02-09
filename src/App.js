@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Board from "./containers/Board";
 import { v4 as uuid } from "uuid";
+import axios from "axios";
 
 function App() {
   const [addTask, setAddTask] = useState(false);
@@ -17,16 +18,27 @@ function App() {
 
   const handleAddTask = async (task, title) => {
     try{
-      const response = await fetch("http://localhost:3006/tickets", {
-        method: "POST",
-        body: JSON.stringify({
-          "lane" : 1,
-          task,
-          title,
-        }),
-        headers: {"Content-type": "application/json; charset=UTF-8"}
-      });
-      console.log(response.data + " res")
+      // const response = await fetch("http://localhost:3006/tickets", {
+      //   method: "POST",
+      //   body: JSON.stringify({
+      //     "lane" : 1,
+      //     task,
+      //     title,
+      //   }),
+      //   headers: {"Content-type": "application/json; charset=UTF-8"}
+      // });
+      // console.log(response.data + " res")
+
+    const body = {
+      id: uuid(),
+      "lane" : 1,
+      task,
+      title,
+    }  
+      
+    const response = await axios.post("http://localhost:3006/tickets", body);
+    console.log(response.data);
+    window.location.reload();
     } catch(error){
       console.log(error)
     }
