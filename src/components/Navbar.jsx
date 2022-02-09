@@ -147,7 +147,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask })
   })
 
   const handleChange = (e) => {
-    // setTaskContent({...taskContent, e.target.name : e.t})
+    setTaskContent({...taskContent, [e.target.name] : e.target.value})
   }
 
   const onAddClick = (e) => {
@@ -156,7 +156,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask })
       alert("fill up both fields")
     }
 
-    console.log(taskContent.task + taskContent.title);
+    console.log(taskContent.task + "-task /n " + taskContent.title);
     handleAddTask(taskContent);
   }
 
@@ -190,15 +190,15 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask })
             type="text"
             name="title"
             placeholder="Title"
-            onChange={(e) => setTaskContent({ title: e.target.value })}
+            onChange={(e) => handleChange(e)}
           />
           <textarea
-            name=""
+            name="task"
             id=""
             cols="30"
             rows="10"
             placeholder="Content"
-            onChange={(e) => setTaskContent({ task: e.target.value })}
+            onChange={(e) => handleChange(e)}
           ></textarea>
           <button onClick={onAddClick}>Add the task</button>
         </form>
