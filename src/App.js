@@ -15,17 +15,22 @@ function App() {
     setEditTask(!editTask);
   };
 
-  const handleAddTask = async (task) => {
-    const response = await fetch("http://localhost:3006/tickets", {
-      method: "post",
-      body: JSON.stringify({
-        "lane" : 1,
-        id: uuid(),
-        task : task.task,
-        title : task.title
-      }),
-    });
-    console.log(response + " res")
+  const handleAddTask = async (task, title) => {
+    try{
+      const response = await fetch("http://localhost:3006/tickets", {
+        method: "POST",
+        body: JSON.stringify({
+          "lane" : 1,
+          task,
+          title,
+        }),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+      });
+      console.log(response.data + " res")
+    } catch(error){
+      console.log(error)
+    }
+   
   };
 
   return (

@@ -155,9 +155,10 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask })
     if (taskContent.title === "" || taskContent.task === "") {
       alert("fill up both fields")
     }
-
-    console.log(taskContent.task + "-task /n " + taskContent.title);
-    handleAddTask(taskContent);
+    const title = taskContent.title;
+    const task = taskContent.task
+    console.log(title + " " + task)
+    handleAddTask(task, title);
   }
 
   return (
