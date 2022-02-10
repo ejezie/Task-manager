@@ -37,7 +37,7 @@ function App() {
     }  
       
     const response = await axios.post("http://localhost:3006/tickets", body);
-    console.log(response.data);
+    // console.log(response.data);
     window.location.reload();
     } catch(error){
       console.log(error)
