@@ -139,7 +139,7 @@ const Icon = styled.h1`
   }
 `;
 
-function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask }) {
+function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, handleUpdateTask }) {
 
   const [taskContent, setTaskContent ] = useState({
     title: "",
@@ -159,6 +159,16 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask })
     const task = taskContent.task
     console.log(title + " " + task)
     handleAddTask(task, title);
+  }
+  const onUpdateClick = (e) => {
+     e.preventDefault();
+    if (taskContent.title === "" || taskContent.task === "") {
+      alert("fill up both fields")
+    }
+    const title = taskContent.title;
+    const task = taskContent.task
+    console.log(title + " " + task)
+    handleUpdateTask(e, task, title);
   }
 
   return (
@@ -208,7 +218,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask })
         <form action="">
           <i class="fas fa-window-close" onClick={toggleEdit}></i>
           UPDATE YOUR TASK
-          <input type="text" placeholder="Title"  name="title"/>
+          <input type="text" placeholder="Title"  name="title"  onChange={(e) => handleChange(e)}/>
           <textarea
             name="task"
             defaultValue={"hello"}
@@ -216,8 +226,9 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask })
             cols="30"
             rows="10"
             placeholder="Content"
+            onChange={(e) => handleChange(e)}
           ></textarea>
-          <button>Update</button>
+          <button onClick={onUpdateClick}>Update</button>
         </form>
       </UpdateTask>
     </Nav>

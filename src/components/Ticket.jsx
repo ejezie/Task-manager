@@ -60,12 +60,21 @@ const Icon = styled.div`
 `;
 
 function Ticket({ticket, onDragStart, toggleEdit}) {
+
+
+  const setTicId = (e) => {
+    e.dataTransfer.setData('upticketid', ticket.id);
+    toggleEdit();
+  }
+
+
+
   return (
     <TicketWrap draggable onDragStart={e=> onDragStart(e, ticket.lane, ticket.id)}>
       <Wrap>
         <Bar lane = {ticket.lane}/>
         <Icon>
-          <i class="fal fa-edit" onClick={toggleEdit}></i>
+          <i class="fal fa-edit" onClick={e => setTicId(e)}></i>
         </Icon>
       </Wrap>
       <Title>{ticket.title}</Title>

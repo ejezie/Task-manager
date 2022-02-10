@@ -45,7 +45,19 @@ function App() {
    
   };
 
-  const handleUpdateTask = async (task, title) => {
+  const handleUpdateTask = async (e, task, title) => {
+    const upticketId = e.dataTransfer.getData('upticketid');
+
+    try{
+      const body = {
+        task,
+        title,
+      }
+      const response = await axios.post(`http://localhost:3006/tickets/${upticketId}`, body);
+      console.log(response.data);
+    }catch(error){
+      console.log(error);
+    }
 
   }
 
