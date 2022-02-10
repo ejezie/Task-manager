@@ -208,9 +208,10 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask })
         <form action="">
           <i class="fas fa-window-close" onClick={toggleEdit}></i>
           UPDATE YOUR TASK
-          <input type="text" placeholder="Title" />
+          <input type="text" placeholder="Title"  name="title"/>
           <textarea
-            name=""
+            name="task"
+            defaultValue={"hello"}
             id=""
             cols="30"
             rows="10"

@@ -45,6 +45,10 @@ function App() {
    
   };
 
+  const handleUpdateTask = async (task, title) => {
+
+  }
+
   return (
     <div className="App">
       <Navbar
@@ -53,6 +57,7 @@ function App() {
         toggleEdit={toggleEditTask}
         editState={editTask}
         handleAddTask={handleAddTask}
+        handleUpdateTask={handleUpdateTask}
       />
       <Board toggleEdit={toggleEditTask} />
     </div>
