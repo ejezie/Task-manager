@@ -26,6 +26,7 @@ class Board extends Component {
     super();
     this.state = {
       tickets: [],
+      drag: false,
     };
   }
 
@@ -40,6 +41,7 @@ class Board extends Component {
   onDragStart = (e, laneid, ticketid) => {
     e.dataTransfer.setData('laneid', laneid);
     e.dataTransfer.setData('ticketid', ticketid);
+    this.props.onDrag(true);
   }
 
   onDragOver = e => {
@@ -49,6 +51,7 @@ class Board extends Component {
   onDrop = (e, laneid) => {
     const ticketLane = e.dataTransfer.getData('laneid');
     const ticketId = e.dataTransfer.getData('ticketid');
+    this.props.onDrag(false)
 
     const tickets = this.state.tickets.map(ticket => {
       if(ticket.lane == ticketLane){

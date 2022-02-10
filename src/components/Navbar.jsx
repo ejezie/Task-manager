@@ -105,7 +105,8 @@ const Wrap = styled.div`
   }
 `;
 const WrapOne = styled(Wrap)``;
-const WrapTwo = styled(Wrap)``;
+const WrapTwo = styled(Wrap)`
+  color: ${(props) => props.drag ? "red" : "white"};`;
 
 const Logo = styled.h1`
   margin-left: 3rem;
@@ -139,7 +140,7 @@ const Icon = styled.h1`
   }
 `;
 
-function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, handleUpdateTask }) {
+function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, handleUpdateTask, drag }) {
 
   const [taskContent, setTaskContent ] = useState({
     title: "",
@@ -160,7 +161,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
     console.log(title + " " + task)
     handleAddTask(task, title);
   }
-  
+
   const onUpdateClick = (e) => {
      e.preventDefault();
     if (taskContent.title === "" || taskContent.task === "") {
@@ -187,11 +188,11 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
           </Icon>
           <HeadingBtn>Add task</HeadingBtn>
         </WrapOne>
-        <WrapTwo onClick={toggleEdit}>
+        <WrapTwo drag={drag} onClick={toggleEdit}>
           <Icon>
-            <i class="fas fa-pencil"></i>
+          <i class="fas fa-trash"></i>
           </Icon>
-          <HeadingBtn>Edit task</HeadingBtn>
+          <HeadingBtn>Drop Card here to delete</HeadingBtn>
         </WrapTwo>
       </div>
       <AddTask add={taskState}>

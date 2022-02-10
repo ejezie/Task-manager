@@ -8,6 +8,7 @@ import axios from "axios";
 function App() {
   const [addTask, setAddTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
+  const [drag, setDrag] = useState(false);
 
   const toggleAddTask = () => {
     setAddTask(!addTask);
@@ -30,14 +31,13 @@ function App() {
       // console.log(response.data + " res")
 
     const body = {
-      id: uuid(),
       "lane" : 1,
       task,
       title,
     }  
       
     const response = await axios.post("http://localhost:3006/tickets", body);
-    // console.log(response.data);
+    console.log(response.data);
     window.location.reload();
     } catch(error){
       console.log(error)
@@ -65,6 +65,11 @@ function App() {
 
   }
 
+  const handleDelete = async () => {
+    const id = JSON.parse(localStorage.getItem('ticketid'));
+    const response = await axios.delete(`http://localhost:3006/tickets/${id}`);
+  }
+
   return (
     <div className="App">
       <Navbar
@@ -74,8 +79,9 @@ function App() {
         editState={editTask}
         handleAddTask={handleAddTask}
         handleUpdateTask={handleUpdateTask}
+        drag={drag}
       />
-      <Board toggleEdit={toggleEditTask} />
+      <Board toggleEdit={toggleEditTask}  onDrag={setDrag}/>
     </div>
   );
 }
