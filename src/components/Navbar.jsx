@@ -160,6 +160,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
     console.log(title + " " + task)
     handleAddTask(task, title);
   }
+  
   const onUpdateClick = (e) => {
      e.preventDefault();
     if (taskContent.title === "" || taskContent.task === "") {

@@ -61,20 +61,18 @@ const Icon = styled.div`
 
 function Ticket({ticket, onDragStart, toggleEdit}) {
 
-
-  const setTicId = (e) => {
-    e.dataTransfer.setData('upticketid', ticket.id);
-    toggleEdit();
+  const setTicId = () => {
+    localStorage.setItem('laneid', ticket.lane);
+    localStorage.setItem('ticketid', ticket.id);
+    console.log(ticket.lane + "-lane " + ticket.id + "-id");
   }
 
-
-
   return (
-    <TicketWrap draggable onDragStart={e=> onDragStart(e, ticket.lane, ticket.id)}>
+    <TicketWrap draggable onDragStart={e=> {onDragStart(e, ticket.lane, ticket.id)}} onClick={setTicId}>
       <Wrap>
         <Bar lane = {ticket.lane}/>
         <Icon>
-          <i class="fal fa-edit" onClick={e => setTicId(e)}></i>
+          <i class="fal fa-edit" onClick={toggleEdit}></i>
         </Icon>
       </Wrap>
       <Title>{ticket.title}</Title>
