@@ -68,6 +68,7 @@ function App() {
   const handleDelete = async () => {
     const id = JSON.parse(localStorage.getItem('ticketid'));
     const response = await axios.delete(`http://localhost:3006/tickets/${id}`);
+    window.location.reload();
   }
 
   return (

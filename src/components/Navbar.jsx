@@ -140,7 +140,7 @@ const Icon = styled.h1`
   }
 `;
 
-function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, handleUpdateTask, drag }) {
+function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, handleUpdateTask, drag, handleDelete }) {
 
   const [taskContent, setTaskContent ] = useState({
     title: "",
@@ -173,6 +173,13 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
     handleUpdateTask(e, task, title);
   }
 
+  const onDropDel = () => {
+    handleDelete();
+  }
+  const onDelDragOver = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <Nav>
       <Wrap>
@@ -192,7 +199,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
           <Icon>
           <i class="fas fa-trash"></i>
           </Icon>
-          <HeadingBtn>Drop Card here to delete</HeadingBtn>
+          <HeadingBtn onDragOver={e => onDelDragOver(e)} onDrop={onDropDel}>Drop Card here to delete</HeadingBtn>
         </WrapTwo>
       </div>
       <AddTask add={taskState}>
