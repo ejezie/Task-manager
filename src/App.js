@@ -79,6 +79,7 @@ function App() {
         editState={editTask}
         handleAddTask={handleAddTask}
         handleUpdateTask={handleUpdateTask}
+        handleDelete={handleDelete}
         drag={drag}
       />
       <Board toggleEdit={toggleEditTask}  onDrag={setDrag}/>
