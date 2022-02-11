@@ -66,9 +66,13 @@ function Ticket({ticket, onDragStart, toggleEdit}) {
     localStorage.setItem('ticketid', ticket.id);
     console.log(ticket.lane + "-lane " + ticket.id + "-id");
   }
+  const onDragDel = () => {
+    localStorage.setItem('laneid', ticket.lane);
+    localStorage.setItem('ticketid', ticket.id);
+  }
 
   return (
-    <TicketWrap draggable onDragStart={e=> {onDragStart(e, ticket.lane, ticket.id)}} onClick={setTicId}>
+    <TicketWrap draggable onDragStart={e=> {onDragStart(e, ticket.lane, ticket.id); }} onClick={setTicId}>
       <Wrap>
         <Bar lane = {ticket.lane}/>
         <Icon>
