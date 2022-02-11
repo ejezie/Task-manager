@@ -54,11 +54,9 @@ class Board extends Component {
     this.props.onDrag(false)
 
     const tickets = this.state.tickets.map(ticket => {
-      if(ticket.lane == ticketLane){
         if(ticket.id == ticketId){
           ticket.lane = laneid;
         }
-      }
       return ticket;
     })
     this.setState({

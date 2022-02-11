@@ -64,6 +64,25 @@ function App() {
     }
 
   }
+  const handleLaneChange = async (e, task, title) => {
+    const lane =  JSON.parse(localStorage.getItem('laneid'));
+    const id = JSON.parse(localStorage.getItem('ticketid'));
+    // const id = 2;
+    try{
+      const body = {
+        id,
+        lane,
+        task,
+        title,
+      }
+      const response = await axios.put(`http://localhost:3006/tickets/${id}`, body);
+      console.log(response.data);
+      window.location.reload();
+    }catch(error){
+      console.log(error);
+    }
+
+  }
 
   const handleDelete = async () => {
     const id = JSON.parse(localStorage.getItem('ticketid'));

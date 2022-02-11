@@ -195,7 +195,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
           </Icon>
           <HeadingBtn>Add task</HeadingBtn>
         </WrapOne>
-        <WrapTwo drag={drag} onClick={toggleEdit}>
+        <WrapTwo drag={drag}>
           <Icon>
           <i class="fas fa-trash"></i>
           </Icon>
