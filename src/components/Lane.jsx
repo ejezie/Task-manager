@@ -33,10 +33,10 @@ const Lanes = styled.div`
 
 const Alert = styled.div`
   text-align: center;
-  padding: 0.5rem;
-  background-color: red;
+  padding: 0.1rem;
+  // background-color: red;
   color: white;
-  font-weight: 500;
+  // font-weight: 500;
 `;
 const Title = styled.div`
   position: absolute;

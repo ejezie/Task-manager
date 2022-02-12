@@ -74,7 +74,6 @@ function App() {
       }
       const response = await axios.put(`http://localhost:3006/tickets/${id}`, body);
       console.log(response.data);
-      window.location.reload();
     }catch(error){
       console.log(error);
     }
