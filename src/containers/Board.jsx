@@ -56,10 +56,11 @@ class Board extends Component {
     const tickets = this.state.tickets.map(ticket => {
         if(ticket.id === ticketId){
           ticket.lane = laneid;
+          // var ticketTarget = ticket;
+          this.props.handleLaneChange(ticketId, laneid, ticket.task, ticket.title)
         }
       return ticket;
     })
-    this.props.handleLaneChange()
     this.setState({
       ...this.state,
       tickets,
