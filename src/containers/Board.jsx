@@ -49,16 +49,17 @@ class Board extends Component {
     }
 
   onDrop = (e, laneid) => {
-    const ticketLane = e.dataTransfer.getData('laneid');
-    const ticketId = e.dataTransfer.getData('ticketid');
+    // const ticketLane = e.dataTransfer.getData('laneid');
+    const ticketId = JSON.parse( e.dataTransfer.getData('ticketid'));
     this.props.onDrag(false)
 
     const tickets = this.state.tickets.map(ticket => {
-        if(ticket.id == ticketId){
+        if(ticket.id === ticketId){
           ticket.lane = laneid;
         }
       return ticket;
     })
+    this.props.handleLaneChange()
     this.setState({
       ...this.state,
       tickets,

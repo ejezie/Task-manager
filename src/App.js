@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Board from "./containers/Board";
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 import axios from "axios";
 
 function App() {
@@ -64,10 +64,7 @@ function App() {
     }
 
   }
-  const handleLaneChange = async (e, task, title) => {
-    const lane =  JSON.parse(localStorage.getItem('laneid'));
-    const id = JSON.parse(localStorage.getItem('ticketid'));
-    // const id = 2;
+  const handleLaneChange = async (id, lane, task, title) => {
     try{
       const body = {
         id,
@@ -88,6 +85,7 @@ function App() {
     const id = JSON.parse(localStorage.getItem('ticketid'));
     const response = await axios.delete(`http://localhost:3006/tickets/${id}`);
     window.location.reload();
+    console.log(response.data)
   }
 
   return (
@@ -102,7 +100,7 @@ function App() {
         handleDelete={handleDelete}
         drag={drag}
       />
-      <Board toggleEdit={toggleEditTask}  onDrag={setDrag}/>
+      <Board toggleEdit={toggleEditTask}  onDrag={setDrag} handleLaneChange={handleLaneChange}/>
     </div>
   );
 }
