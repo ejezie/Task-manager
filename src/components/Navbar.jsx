@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import bg from "../assets/bg2.jpeg";
+// import bg from "../assets/bg2.jpeg";
 import { useState } from "react";
 
 const Nav = styled.div`
@@ -147,6 +147,8 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
     task: "",
   })
 
+  const [activateBtn, setActivateBtn] = useState(false);
+
   const handleChange = (e) => {
     setTaskContent({...taskContent, [e.target.name] : e.target.value})
   }
@@ -155,6 +157,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
      e.preventDefault();
     if (taskContent.title === "" || taskContent.task === "") {
       alert("fill up both fields")
+      setActivateBtn(true);
     }
     const title = taskContent.title;
     const task = taskContent.task
@@ -166,6 +169,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
      e.preventDefault();
     if (taskContent.title === "" || taskContent.task === "") {
       alert("fill up both fields")
+      setActivateBtn(true);
     }
     const title = taskContent.title;
     const task = taskContent.task
@@ -179,6 +183,11 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
   const onDelDragOver = (e) => {
     e.preventDefault()
   }
+
+  const task = localStorage.getItem('task');
+  const title = localStorage.getItem('title');
+  // console.log(task);
+
 
   return (
     <Nav>
@@ -220,24 +229,24 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
             placeholder="Content"
             onChange={(e) => handleChange(e)}
           ></textarea>
-          <button onClick={onAddClick}>Add the task</button>
+          <button disabled={activateBtn} onClick={onAddClick}>Add the task</button>
         </form>
       </AddTask>
       <UpdateTask edit={editState}>
         <form action="">
           <i class="fas fa-window-close" onClick={toggleEdit}></i>
           UPDATE YOUR TASK
-          <input type="text" placeholder="Title"  name="title"  onChange={(e) => handleChange(e)}/>
+          <input type="text" placeholder="Title"  defaultValue={title} name="title"  onChange={(e) => handleChange(e)}/>
           <textarea
             name="task"
-            defaultValue={"hello"}
+            defaultValue={task}
             id=""
             cols="30"
             rows="10"
             placeholder="Content"
             onChange={(e) => handleChange(e)}
           ></textarea>
-          <button onClick={onUpdateClick}>Update</button>
+          <button disabled={activateBtn}  onClick={onUpdateClick}>Update</button>
         </form>
       </UpdateTask>
     </Nav>

@@ -64,6 +64,8 @@ function Ticket({ticket, onDragStart, toggleEdit}) {
   const setTicId = () => {
     localStorage.setItem('laneid', ticket.lane);
     localStorage.setItem('ticketid', ticket.id);
+    localStorage.setItem('task', ticket.task);
+    localStorage.setItem('title', ticket.title);
     console.log(ticket.lane + "-lane " + ticket.id + "-id");
   }
   const onDragDel = () => {
