@@ -46,6 +46,11 @@ const AddTask = styled.div`
       cursor: pointer;
       font-size: 1.5rem;
     }
+    .text{
+    @media (max-width: 560px) {
+      font-size: 0.6rem;
+    }
+    }
     input {
       border-bottom: 1px solid black;
       border-top: none;
@@ -117,11 +122,17 @@ const Logo = styled.h1`
     font-size: 0.9rem;
     margin-left: 1rem;
   }
+  @media (max-width: 560px) {
+    font-size: 0.6rem;
+  }
 `;
 const Heading = styled.h1`
   font-size: 1.4rem;
   @media (max-width: 960px) {
     font-size: 1.2rem;
+  }
+  @media (max-width: 560px) {
+    font-size: 0.8rem;
   }
 `;
 const HeadingBtn = styled.h1`
@@ -214,7 +225,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
       <AddTask add={taskState}>
         <form action="">
           <i class="fas fa-window-close" onClick={toggleTask}></i>
-          ADD A NEW TASK
+          <div className="text">ADD A NEW TASK</div>
           <input
             type="text"
             name="title"
@@ -235,7 +246,7 @@ function Navbar({ toggleEdit, toggleTask, taskState, editState, handleAddTask, h
       <UpdateTask edit={editState}>
         <form action="">
           <i class="fas fa-window-close" onClick={toggleEdit}></i>
-          UPDATE YOUR TASK
+          <div className="text">UPDATE YOUR TASK</div>
           <input type="text" placeholder="Title"  defaultValue={title} name="title"  onChange={(e) => handleChange(e)}/>
           <textarea
             name="task"

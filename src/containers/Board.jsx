@@ -10,6 +10,9 @@ const BoardWrap = styled.div`
   height: 90vh;
   border-left: 1.4rem solid rgba(255, 255, 255, 0.4);
   overflow-x: scroll;
+  @media (max-width: 960px) {
+    padding-right: 1rem;
+  }
 `;
 
 const Circle = styled.div`

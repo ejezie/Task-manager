@@ -9,6 +9,7 @@ const Lanes = styled.div`
   flex-direction: column;
   padding-top: 6rem;
   width: 18rem;
+  min-width: 17rem;
   height: fit-content;
   max-height: 85vh;
   background: rgba(255, 255, 255, 0.2);
@@ -21,7 +22,9 @@ const Lanes = styled.div`
   margin: 1.1rem 0rem 1rem 1.1rem;
   overflow-y: scroll;
   overflow-x: hidden;
-  position: relative;
+  @media (max-width: 960px) {
+    width: 120rem
+  }
   &:before {
     content: "";
     position: absolute;
