@@ -9,6 +9,7 @@ const BoardWrap = styled.div`
   width: 100vw;
   height: 90vh;
   border-left: 1.4rem solid rgba(255, 255, 255, 0.4);
+  overflow-x: scroll;
 `;
 
 const Circle = styled.div`

@@ -20,6 +20,7 @@ const Lanes = styled.div`
   position: relative;
   margin: 1.1rem 0rem 1rem 1.1rem;
   overflow-y: scroll;
+  overflow-x: hidden;
   position: relative;
   &:before {
     content: "";
