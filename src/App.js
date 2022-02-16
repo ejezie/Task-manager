@@ -36,7 +36,7 @@ function App() {
       title,
     }  
       
-    const response = await axios.post("https://minitasker.vercel.app/tickets", body);
+    const response = await axios.post("https://minitasker-3srv0lhc9-ejezie.vercel.app/tickets", body);
     console.log(response.data);
     window.location.reload();
     } catch(error){
@@ -56,7 +56,7 @@ function App() {
         task,
         title,
       }
-      const response = await axios.put(`https://minitasker.vercel.app/tickets/${id}`, body);
+      const response = await axios.put(`https://minitasker-3srv0lhc9-ejezie.vercel.app/${id}`, body);
       console.log(response.data);
       window.location.reload();
     }catch(error){
@@ -72,7 +72,7 @@ function App() {
         task,
         title,
       }
-      const response = await axios.put(`https://minitasker.vercel.app/tickets/${id}`, body);
+      const response = await axios.put(`https://minitasker-3srv0lhc9-ejezie.vercel.app/${id}`, body);
       console.log(response.data);
     }catch(error){
       console.log(error);
@@ -82,7 +82,7 @@ function App() {
 
   const handleDelete = async () => {
     const id = JSON.parse(localStorage.getItem('ticketid'));
-    const response = await axios.delete(`https://minitasker.vercel.app/tickets/${id}`);
+    const response = await axios.delete(`https://minitasker-3srv0lhc9-ejezie.vercel.app/${id}`);
     window.location.reload();
     console.log(response.data)
   }
