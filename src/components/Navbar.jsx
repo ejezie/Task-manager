@@ -140,6 +140,7 @@ const HeadingBtn = styled.h1`
   }
   @media (max-width: 560px) {
     font-size: 0.5rem;
+    margin-right: 0.5rem;
   }
 `;
 const Icon = styled.h1`
