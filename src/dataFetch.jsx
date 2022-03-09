@@ -13,7 +13,7 @@ export default function dataFecth(WrapComponent) {
     async componentDidMount() {
       this._isMounted = true;
       try {
-        const tickets = await fetch("https://minitasker-3srv0lhc9-ejezie.vercel.app/tickets");
+        const tickets = await fetch("http://localhost:3006/tickets");
         const ticketJSON = await tickets.json();
         // console.log(ticketJSON);
 
