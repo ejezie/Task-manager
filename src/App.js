@@ -36,7 +36,7 @@ function App() {
       title,
     }  
       
-    const response = await axios.post("http://localhost:3006/tickets", body);
+    const response = await axios.post("https://my-json-server.typicode.com/ejezie/Task-manager/tickets/", body);
     console.log(response.data);
     window.location.reload();
     } catch(error){
